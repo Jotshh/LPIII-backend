@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import Professor from "./professor";
 import Interesse from "./interesse";
+import Autor from "./autor";
 export enum Categoria { EXTENSÃO = "Extensão", IC = "Iniciação Científica", TCC = "TCC" };
 export enum Resultado { ARTIGO = "artigo", DESENVOLVIMENTO = "desenvolvimento", MONOGRAFIA =
 "monografia" };
@@ -22,8 +22,8 @@ export default class Proposta extends BaseEntity {
  concorrendo_bolsa: boolean;
  @Column({ type: "enum", enum: Resultado })
  resultado: Resultado;
- @ManyToOne(() => Professor, (professor) => professor.propostas, { onDelete: "CASCADE" })
- professor: Professor;
+ @ManyToOne(() => Autor, (autor) => autor.propostas, { onDelete: "CASCADE" })
+ autor: Autor;
  @OneToMany(() => Interesse, (interesse) => interesse.proposta)
  interesses: Interesse[];
 }

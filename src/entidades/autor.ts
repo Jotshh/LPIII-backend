@@ -4,16 +4,16 @@ import Usuário from "./usuário";
 import Proposta from "./proposta";
 export enum Titulação {MESTRADO = "mestrado", DOUTORADO = "doutorado"};
 @Entity()
-export default class Professor extends BaseEntity {
+export default class Autor extends BaseEntity {
 @PrimaryGeneratedColumn()
  id: number;
  @Column({ type: "enum", enum: Titulação })
  titulação: Titulação;
  @Column()
  anos_experiência_empresarial: number;
- @OneToMany(() => Proposta, (proposta) => proposta.professor)
+ @OneToMany(() => Proposta, (proposta) => proposta.autor)
  propostas: Proposta[];
- @OneToOne(() => Usuário, (usuário) => usuário.professor, { onDelete: "CASCADE" })
+ @OneToOne(() => Usuário, (usuário) => usuário.autor, { onDelete: "CASCADE" })
  @JoinColumn()
  usuário: Usuário;
 }
