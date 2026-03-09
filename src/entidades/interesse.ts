@@ -1,6 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from
 "typeorm";
-import Aluno from "./gerenteEditora";
+import GerenteEditora from "./gerenteEditora";
 import Proposta from "./proposta";
 @Entity()
 export default class Interesse extends BaseEntity {
@@ -14,6 +14,6 @@ export default class Interesse extends BaseEntity {
  data_manifestação: Date;
  @ManyToOne(() => Proposta, (proposta) => proposta.interesses, { onDelete: "CASCADE" })
  proposta: Proposta;
- @ManyToOne(() => Aluno, (aluno) => aluno.interesses, { onDelete: "CASCADE" })
- aluno: Aluno;
+ @ManyToOne(() => GerenteEditora, (gerenteEditora) => gerenteEditora.interesses, { onDelete: "CASCADE" })
+ gerenteEditora: GerenteEditora;
 }

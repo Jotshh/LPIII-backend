@@ -1,7 +1,7 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToOne, PrimaryColumn } from "typeorm";
 import Autor from "./autor";
-import Aluno from "./gerenteEditora";
-export enum Perfil { ALUNO = "aluno", AUTOR = "autor" };
+import GerenteEditora from "./gerenteEditora";
+export enum Perfil { GERENTEEDITORA = "gerenteEditora", AUTOR = "autor" };
 export enum Status { PENDENTE = "pendente", ATIVO = "ativo" };
 export enum Cores { AMARELO = "yellow", ANIL = "indigo", AZUL = "blue", AZUL_PISCINA = "cyan",
  CINZA_ESCURO = "bluegray", LARANJA = "orange", ROSA = "pink", ROXO = "purple", VERDE = "green",
@@ -28,8 +28,8 @@ status: Status;
  cor_tema: string;
  @OneToOne(() => Autor, (autor) => autor.usuário)
  autor: Autor;
- @OneToOne(() => Aluno, (aluno) => aluno.usuário)
- aluno: Aluno;
+ @OneToOne(() => GerenteEditora, (gerenteEditora) => gerenteEditora.usuário)
+ gerenteEditora: GerenteEditora;
  @CreateDateColumn()
  data_criação: Date;
 }
