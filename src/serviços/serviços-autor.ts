@@ -7,12 +7,12 @@ export default class ServiçosAutor {
 constructor() {}
 static async cadastrarAutor(request, response) {
 try {
-const { usuário_info, titulação, anos_experiência_empresarial } = request.body;
+const { usuário_info, área_atuação, livros_publicados } = request.body;
 const { usuário, token } = await ServiçosUsuário.cadastrarUsuário(usuário_info);
 const entityManager = getManager();
 await entityManager.transaction(async (transactionManager) => {
 await transactionManager.save(usuário);
-const autor = Autor.create({ usuário, titulação, anos_experiência_empresarial });
+const autor = Autor.create({ usuário, área_atuação, livros_publicados });
 await transactionManager.save(autor);
 await transactionManager.update(Usuário, usuário.cpf, { status: Status.ATIVO });
 return response.json({ status: Status.ATIVO, token });
@@ -28,8 +28,8 @@ const autor = await Autor.findOne({ where: { usuário: cpf_encriptado },
 relations: ["usuário"] });
 if (!autor) return response.status(404).json({ erro: "Autor não encontrado." });
 return response.json({ nome: autor.usuário.nome, email: autor.usuário.email,
- titulação: autor.titulação,
- anos_experiência_empresarial: autor.anos_experiência_empresarial });
+ área_atuação: autor.área_atuação,
+ livros_publicados: autor.livros_publicados });
  } catch (error) { return response.status(500).json({ erro: "Erro BD : buscarAutor" }); }
  };
 };

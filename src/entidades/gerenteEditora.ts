@@ -1,16 +1,16 @@
 import { BaseEntity, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn }
  from "typeorm";
 import Usuário from "./usuário";
-import Interesse from "./interesse";
-export enum Curso { EC = "Engenharia de Computação", SI = "Sistemas de Informação" };
+import Interesse from "./avaliação";
+export enum Hierarquia { Se = "Senior", Ju = "Júnior" };
 @Entity()
 export default class GerenteEditora extends BaseEntity {
 @PrimaryGeneratedColumn()
  id: number;
- @Column({ type: "enum", enum: Curso })
- curso: Curso;
+ @Column({ type: "enum", enum: Hierarquia })
+ cargo: Hierarquia;
  @Column()
- ano_ingresso: number;
+ anos_experiência_empresarial: number;
  @Column({ type: "date" })
  data_nascimento: Date;
  @Column()

@@ -27,7 +27,7 @@ const autor = await Autor.findOne({ where: { usuário: usuário.cpf },
  relations: ["usuário"] });
 if (!autor) return false;
 return true;
-case Perfil.GERENTEEDITORA:
+case Perfil.GERENTE_EDITORA:
 const gerenteEditora = await GerenteEditora.findOne({ where: { usuário: usuário.cpf },
  relations: ["usuário"] });
 if (!gerenteEditora) return false;
