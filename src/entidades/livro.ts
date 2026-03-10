@@ -1,11 +1,11 @@
 import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import Interesse from "./avaliação";
+import Avaliação from "./avaliação";
 import Autor from "./autor";
 export enum Gênero { DIDÁTICO = "Didático", ARTIGO = "Artigo", FANTASIA = "Fantasia" };
 export enum Tradução { PORTUGUÊS = "Português", INGLÊS = "Inglês", ESPANHOL =
 "Espanhol" };
 @Entity()
-export default class Proposta extends BaseEntity {
+export default class Livro extends BaseEntity {
  @PrimaryGeneratedColumn()
  id: number;
  @Column()
@@ -20,8 +20,8 @@ export default class Proposta extends BaseEntity {
  bestseller: boolean;
  @Column({ type: "enum", enum: Tradução })
  tradução: Tradução;
- @ManyToOne(() => Autor, (autor) => autor.propostas, { onDelete: "CASCADE" })
+ @ManyToOne(() => Autor, (autor) => autor.livros, { onDelete: "CASCADE" })
  autor: Autor;
- @OneToMany(() => Interesse, (interesse) => interesse.proposta)
- interesses: Interesse[];
+ @OneToMany(() => Avaliação, (avaliação) => avaliação.livro)
+ avaliações: Avaliação[];
 }

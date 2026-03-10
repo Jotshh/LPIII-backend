@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from
 "typeorm";
 import Usuário from "./usuário";
-import Proposta from "./livro";
+import Livro from "./livro";
 export enum ÁreaAtuação {ACADÊMICO = "acadêmico", FICÇÃO_CIENTÍFICA = "ficcão_científica"};
 @Entity()
 export default class Autor extends BaseEntity {
@@ -11,8 +11,8 @@ export default class Autor extends BaseEntity {
  área_atuação: ÁreaAtuação;
  @Column()
  livros_publicados: number;
- @OneToMany(() => Proposta, (proposta) => proposta.autor)
- propostas: Proposta[];
+ @OneToMany(() => Livro, (livro) => livro.autor)
+ livros: Livro[];
  @OneToOne(() => Usuário, (usuário) => usuário.autor, { onDelete: "CASCADE" })
  @JoinColumn()
  usuário: Usuário;

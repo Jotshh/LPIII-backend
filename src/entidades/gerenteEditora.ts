@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn }
  from "typeorm";
 import Usuário from "./usuário";
-import Interesse from "./avaliação";
+import Avaliação from "./avaliação";
 export enum Hierarquia { Se = "Senior", Ju = "Júnior" };
 @Entity()
 export default class GerenteEditora extends BaseEntity {
@@ -15,8 +15,8 @@ export default class GerenteEditora extends BaseEntity {
  data_nascimento: Date;
  @Column()
  telefone: string;
- @OneToMany(() => Interesse, (interesse) => interesse.gerenteEditora)
- interesses: Interesse[];
+ @OneToMany(() => Avaliação, (avaliação) => avaliação.gerenteEditora)
+ avaliações: Avaliação[];
  @OneToOne(() => Usuário, usuário => usuário.gerenteEditora, { onDelete: "CASCADE" })
  @JoinColumn()
  usuário: Usuário;
