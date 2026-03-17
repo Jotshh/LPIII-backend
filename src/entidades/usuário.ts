@@ -1,6 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToOne, PrimaryColumn } from "typeorm";
 import Autor from "./autor";
-import GerenteEditora from "./gerenteEditora";
+import GerenteEditora from "./gerente-editora";
 export enum Perfil { GERENTE_EDITORA = "gerenteEditora", AUTOR = "autor" };
 export enum Status { PENDENTE = "pendente", ATIVO = "ativo" };
 export enum Cores { AMARELO = "yellow", ANIL = "indigo", AZUL = "blue", AZUL_PISCINA = "cyan",

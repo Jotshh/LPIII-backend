@@ -1,6 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from
 "typeorm";
-import GerenteEditora from "./gerenteEditora";
+import GerenteEditora from "./gerente-editora";
 import Livro from "./livro";
 @Entity()
 export default class Avaliação extends BaseEntity {
