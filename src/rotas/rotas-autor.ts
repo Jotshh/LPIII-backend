@@ -7,3 +7,5 @@ export default RotasAutor;
 RotasAutor.post("/", ServiçosAutor.cadastrarAutor);
 RotasAutor.get("/:cpf", verificarToken, verificarPerfilAutor,
  ServiçosAutor.buscarAutor);
+RotasAutor.patch("/", verificarToken, verificarPerfilAutor,
+ ServiçosAutor.atualizarAutor);
