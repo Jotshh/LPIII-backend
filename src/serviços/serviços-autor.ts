@@ -32,4 +32,14 @@ return response.json({ nome: autor.usuário.nome, email: autor.usuário.email,
  livros_publicados: autor.livros_publicados });
  } catch (error) { return response.status(500).json({ erro: "Erro BD : buscarAutor" }); }
  };
+
+ static async atualizarAutor(request, response) {
+try {
+const { cpf, área_atuação, livros_publicados } = request.body;
+const cpf_encriptado = md5(cpf);
+await Autor.update({ usuário: { cpf: cpf_encriptado } },
+ { área_atuação, livros_publicados });
+return response.json();
+ } catch (error) { return response.status(500).json({ erro: "Erro BD : atualizarAutor" }); }
+ };
 };
