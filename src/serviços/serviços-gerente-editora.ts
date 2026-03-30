@@ -17,7 +17,8 @@ await transactionManager.save(gerenteEditora);
 await transactionManager.update(Usuário, usuário.cpf, { status: Status.ATIVO });
 return response.json({ status: Status.ATIVO, token });
  });
- } catch (error) { return response.status(500).json({ erro: error }); }
+ } catch (error) { return console.log("Erro completo:", error);
+ }
  };
 static async atualizarGerenteEditora(request, response) {
 try {

@@ -2,7 +2,7 @@ import { BaseEntity, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGen
  from "typeorm";
 import Usuário from "./usuário";
 import Avaliação from "./avaliação";
-export enum Hierarquia { Se = "Senior", Ju = "Júnior" };
+export enum Hierarquia { Se = "Senior", Ju = "Junior" };
 @Entity()
 export default class GerenteEditora extends BaseEntity {
 @PrimaryGeneratedColumn()
